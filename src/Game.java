@@ -30,9 +30,10 @@ public class Game
                 }
                 option = keyboard.nextInt();
 
-                if (answers[option].equals(answers[4]))
-                {
-                    score++;
+                if (option != 5) {
+                    if (answers[option].equals(answers[4])) {
+                        score++;
+                    }
                 }
 
             } while (option <= 0 || option > 5);
