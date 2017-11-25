@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Question
 {
     private String[] words = new String[5];
+    private List<String> shuffled = new ArrayList<>();
 
     Question()
     {
@@ -27,6 +30,11 @@ public class Question
         return words;
     }
 
+    public List getShuffled()
+    {
+        return shuffled;
+    }
+
     public void setWords(String questionWord, String firstWord, String secondWord, String thirdWord, String answer)
     {
         words[0] = questionWord;
@@ -38,21 +46,27 @@ public class Question
 
     public String toString() {
         int[] solutionArray = {0, 1, 2, 3};
+
         shuffleArray(solutionArray);
         String question = "New word: " + words[0];
 
-        for (int i = 0; i < solutionArray.length; i++) {
+        for (int i = 0; i < solutionArray.length; i++)
+        {
             switch (solutionArray[i]) {
                 case 0:
+                    shuffled.add(words[1]);
                     question += ("\n" + (i + 1) + ". " + words[1]);
                     break;
                 case 1:
+                    shuffled.add(words[2]);
                     question += ("\n" + (i + 1) + ". " + words[2]);
                     break;
                 case 2:
+                    shuffled.add(words[3]);
                     question += ("\n" + (i + 1) + ". " + words[3]);
                     break;
                 case 3:
+                    shuffled.add(words[4]);
                     question += ("\n" + (i + 1) + ". " + words[4]);
                     break;
             }

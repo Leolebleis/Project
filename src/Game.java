@@ -22,14 +22,17 @@ public class Game
             int option;
             do {
                 System.out.println("Please enter a number from 1 to 5: ");
-                while (!keyboard.hasNextInt()) {
+                while (!keyboard.hasNextInt())
+                {
                     System.out.println("That's not a number!");
                     keyboard.next(); // this is important!
                 }
                 option = keyboard.nextInt();
 
-                if (option != 5) {
-                    if (answers[option].equals(answers[4])) {
+                if (option != 5)
+                {
+                    if (aQuestion.getShuffled().get(option-1).equals(answers[4]))
+                    {
                         score++;
                     }
                 }
