@@ -27,10 +27,6 @@ public class Question
         return words;
     }
 
-    public String getSpecificWord(int i) {
-        return words[i];
-    }
-
     public void setWords(String questionWord, String firstWord, String secondWord, String thirdWord, String answer)
     {
         words[0] = questionWord;
@@ -82,8 +78,4 @@ public class Question
         }
     }
 
-    public String toStringShuffled()
-    {
-        return words[0] + ", " + words[1] + ", " + words[2] + ", " + words[3] + ", " + words[4];
-    }
 }
