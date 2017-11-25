@@ -37,7 +37,7 @@ public class Misc {
     {
         if (currentPlayer != null)
         {
-            Game.Game(); // Implementation starts here!
+            Game.theGame(); // Implementation starts here!
 
             // Test to print all the questions, which works
 //            for(int i = 0; i != GameController.questionList.size(); i++)

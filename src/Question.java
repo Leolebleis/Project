@@ -39,29 +39,28 @@ public class Question
     public String toString() {
         int[] solutionArray = {0, 1, 2, 3};
         shuffleArray(solutionArray);
-        String questions = "New word: " + words[0];
-
+        String question = "New word: " + words[0];
 
         for (int i = 0; i < solutionArray.length; i++) {
             switch (solutionArray[i]) {
                 case 0:
-                    questions += ("\n" + (i + 1) + ". " + words[1]);
+                    question += ("\n" + (i + 1) + ". " + words[1]);
                     break;
                 case 1:
-                    questions += ("\n" + (i + 1) + ". " + words[2]);
+                    question += ("\n" + (i + 1) + ". " + words[2]);
                     break;
                 case 2:
-                    questions += ("\n" + (i + 1) + ". " + words[3]);
+                    question += ("\n" + (i + 1) + ". " + words[3]);
                     break;
                 case 3:
-                    questions += ("\n" + (i + 1) + ". " + words[4]);
+                    question += ("\n" + (i + 1) + ". " + words[4]);
                     break;
             }
         }
 
-        questions += "\n5. I’m not sure\n\n ";
+        question += "\n5. I’m not sure\n\n ";
 
-        return questions;
+        return question;
     }
 
     private static void shuffleArray(int[] ar) //Fisher–Yates shuffle//
