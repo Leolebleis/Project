@@ -8,7 +8,6 @@ public class Game
 
     public static void theGame(Player aPlayer)
     {
-        System.out.print(aPlayer.toString());
         List randomQuestions = GameController.questionList;
         Scanner scan = new Scanner(System.in);
 

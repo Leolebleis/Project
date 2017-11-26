@@ -84,7 +84,11 @@ public class FileManager
         try
         {
             inputStream =
-                    new Scanner(new FileInputStream("quiz.csv")).useDelimiter(",");
+                    new Scanner(new FileInputStream("mini_quiz.csv")).useDelimiter(",");
+            // quiz.csv would also work perfectly well:
+
+            // inputStream =
+            //         new Scanner(new FileInputStream("quiz.csv")).useDelimiter(",");
 
             while (inputStream.hasNextLine())
             {
