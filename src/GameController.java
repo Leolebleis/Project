@@ -1,7 +1,8 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class GameController {
+public class GameController
+{
 
     // We set the lists public as they are constantly used throughout the program
     public static List playerList; // List containing player objects for each line in users.csv.
@@ -179,7 +180,7 @@ public class GameController {
                     "\n\tneed to choose the synonym of a word from a list displayed. " +
                     "\n\tYou must select the synonym in the list in order to gain a point. " +
                     "\n\tAt the end of the game, you will be able to see your score!");
-            System.out.print("\nAre you ready to play? (yes/no) ");
+            System.out.print("\nAre you ready to play? (yes/no): ");
             answer = scan.nextLine();
         }
     }
