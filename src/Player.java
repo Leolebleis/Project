@@ -72,6 +72,7 @@ public class Player
     // This is how the players will be printed to the file
     public String toString()
     {
+        // Prints a backslash before commas to allow the user to use them (this is only used when printing to the file)
         String thePassword = password.replaceAll(",","\\\\,");
         String theUsername = username.replaceAll(",","\\\\,");
 
@@ -82,10 +83,15 @@ public class Player
     public boolean equals(Object otherObject) throws NullPointerException
     {
         if (otherObject == null)
+        {
             return false;
+        }
 
         if (getClass() != otherObject.getClass())
+        {
             return false;
+        }
+
         Player otherPlayer = (Player) otherObject;
         return (this.username.compareTo(otherPlayer.username) == 0 && (this.password.compareTo(otherPlayer.password) == 0));
     }

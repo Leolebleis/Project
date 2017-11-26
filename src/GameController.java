@@ -6,33 +6,29 @@ public class GameController {
     // We set the lists public as they are constantly used throughout the program
     public static List playerList; // List containing player objects for each line in users.csv.
     public static List questionList; // List containing question objects for each line in quiz.csv
-    private static final int minPasswordLength = 6; // Minimum password length, private
+    private static final int minPasswordLength = 6;
 
     // We decided to use lists instead of arrays because they are easier to deal with: they do not need to be
     // initialized, which is especially useful when appending the playerList
 
     public static void main(String[] args)
     {
-
         Player aPlayer = null;
         Misc aMisc = new Misc();
         // Stores both users and questions in lists at startup
         playerList = FileManager.getUsers();
         questionList = FileManager.getQuestions();
 
-        // We use a String for the user input instead of a character because it is easier to deal with an empty input
-        // from the user. We initialize it:
-
         String option = "";
 
-        while (!option.equals("q")) // if the user input is q, the program stops
+        while (!option.equals("q"))
         {
             option = menu(); // We call the menu() method to take the user input
 
             switch (option)
             {
                 case "l":
-                    aPlayer = loginDetails(); // Stores a Player object returned from loginDetails into aPlayer
+                    aPlayer = loginDetails(); // Stores the player if a match is found or null otherwise
                     aMisc.login(aPlayer);
                     break;
                 case "r":
@@ -46,6 +42,7 @@ public class GameController {
                     aboutText();
                     break;
                 case "q":
+                    // Exits the game
                     break;
                 default:
                     System.out.println("Unknown option");
@@ -57,7 +54,7 @@ public class GameController {
         System.out.println("Bye, bye");
     }
 
-    private static String menu() // returns a String that is stored in option
+    private static String menu()
     {
         Scanner scan = new Scanner(System.in);
 
@@ -78,13 +75,13 @@ public class GameController {
             userInput = scan.nextLine().toLowerCase();
         }
 
-        userInput = userInput.toLowerCase().substring(0, 1); // .substring(0, 1) only takes the first letter
+        userInput = userInput.toLowerCase().substring(0, 1); // .substring(0, 1) is the equivalent of charAt(0) for a String
         return (userInput);
     }
 
-    //--------------------------------------------------------------------------
+    //-----------------------------------------------------------------------
     //  Inputs the details of a player passed as a parameter for logging in.
-    //--------------------------------------------------------------------------
+    //-----------------------------------------------------------------------
     private static Player loginDetails()
     {
         Scanner scan = new Scanner(System.in);
@@ -97,49 +94,45 @@ public class GameController {
         }
 
         String password = "";
-        while (password.isEmpty() || !passwordRestriction(password)) // checks if the 6 characters or more condition is met
+        while (password.isEmpty() || !passwordRestriction(password))
         {
             System.out.print("\n\tEnter the player\'s password (6 characters or more): ");
             password = scan.next();
         }
 
-        // The next loop passes a player object with first names and last names empty. This triggers only a part of
-        // the checkRegistered method that is specific for logging in, as it is different when registering (we are
-        // checking if both password and usernames match against only usernames when registering)
+        // This checks if the user exists or not by triggering only part of checkRegistered
+        Player aPlayer = Misc.checkRegistered(username, password);
 
-        if (Misc.checkRegistered(username, password) == null)
+        if (aPlayer == null) // aPlayer is null if no match has been found
         {
             System.out.println("\nYou must register before you login.");
-            return null;
         }
         else
         {
-            Player thePlayer = Misc.checkRegistered(username, password);
-
-            System.out.println("You have successfully logged in.\nPlayer: " + thePlayer.getFirstName() + " " + thePlayer.getLastName());
-            System.out.println("Score: " + thePlayer.getScore());
-            System.out.println("Number of games: " + thePlayer.getNumberOfGames());
-            return thePlayer;
+            System.out.println("You have successfully logged in.\nPlayer: " + aPlayer.getFirstName() + " " + aPlayer.getLastName());
+            System.out.println("Score: " + aPlayer.getScore());
+            System.out.println("Number of games: " + aPlayer.getNumberOfGames());
         }
+        return aPlayer;
 
     }
 
-    //--------------------------------------------------------------------------
+    //------------------------------------------------------------------------
     //  Inputs the details of a player passed as a parameter for registration.
-    //--------------------------------------------------------------------------
+    //------------------------------------------------------------------------
     private static Player registerDetails()
     {
         Scanner scan = new Scanner(System.in);
 
         String firstName = "";
-        while (firstName.isEmpty())
+        while (firstName.isEmpty() || firstName.contains(","))
         {
             System.out.print("\n\tEnter your first name: ");
             firstName = scan.nextLine();
         }
 
         String lastName = "";
-        while (lastName.isEmpty())
+        while (lastName.isEmpty() || lastName.contains(","))
         {
             System.out.print("\n\tEnter your last name: ");
             lastName = scan.nextLine();
@@ -159,8 +152,11 @@ public class GameController {
             password = scan.next();
         }
 
-        // This only triggers part of checkRegistered
-        if (Misc.checkRegistered(username, "") == null)
+        // This only passes the username as only this needs to be unique when registering
+        // In turn, it triggers only part of checkRegistered
+        Player aPlayer = Misc.checkRegistered(username, "");
+
+        if (aPlayer == null) // aPlayer is null if a username match has been found
         {
             System.out.print("\n\tThis username is already taken.");
             return null;

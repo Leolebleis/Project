@@ -1,12 +1,8 @@
 public class Misc
 {
-    // currentPlayer is not null when the player has logged in already
+    // currentPlayer != null when the player has logged in already
     private Player currentPlayer = null;
 
-    public static String clearScreen()
-    {
-        return "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-    }
 
     public void login(Player aPlayer)
     {
@@ -42,7 +38,7 @@ public class Misc
 
     public Player authGame(Player aPlayer)
     {
-        if (currentPlayer != null)
+        if (currentPlayer != null) // Launches the game only if the player has registered
         {
             Game.theGame(currentPlayer);
             return currentPlayer;
@@ -78,7 +74,7 @@ public class Misc
             }
         }
 
-        else // Loop only activates if logging in
+        else // Loop only activates if logging in (password != "")
         {
             for (int i = 0; i != GameController.playerList.size(); i++)
             {

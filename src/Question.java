@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Question
 {
-    private String[] words = new String[5];             // Array of different questions
-    private List<String> shuffled = new ArrayList<>();  // Shuffled list that will be displayed in game
+    private String[] words = new String[5];             // Original Array of different questions
+    private List<String> shuffled = new ArrayList<>();  // Shuffled list of questions that will be displayed in game
 
     Question()
     {
@@ -36,15 +36,18 @@ public class Question
     }
 
     // Displays the questions already randomized
-    public String toString() {
+    public String toString()
+    {
         int[] solutionArray = {0, 1, 2, 3};
-
         shuffleArray(solutionArray);
+        // This method shuffles the integers from 0 to 3
+
         String question = "\n\tNew word: " + words[0];
 
         for (int i = 0; i < solutionArray.length; i++)
         {
-            switch (solutionArray[i]) {
+            switch (solutionArray[i])
+            {
                 case 0:
                     shuffled.add(words[1]); // Using a list makes this process very straight forward
                     question += ("\n" + (i + 1) + ". " + words[1]);

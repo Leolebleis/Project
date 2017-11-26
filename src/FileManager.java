@@ -28,6 +28,7 @@ public class FileManager
                 // are any backslash before it
                 String[] userList = users.split("(?<!\\\\)" + Pattern.quote(","));
 
+                // Deletes the backslashes before commas before storing the player in playerArray
                 String password = userList[3].replaceAll("\\\\,", ",");
                 String username = userList[2].replaceAll("\\\\,",",");
                 int score = Integer.parseInt(userList[4]);
