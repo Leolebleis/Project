@@ -4,12 +4,14 @@ import java.util.Scanner;
 
 public class Game
 {
-    static int score;
+    private static int score; // Score of the player for this game
 
-    public static void theGame()
+    public static Player theGame(Player aPlayer)
     {
+
+        System.out.print(aPlayer.toString());
         List randomQuestions = GameController.questionList;
-        Scanner keyboard = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         for (int i = 0; i < 10; i++)
         {
@@ -20,31 +22,39 @@ public class Game
 
             System.out.print(aQuestion.toString());
 
-            int option;
-            do {
-                System.out.println("Please enter a number from 1 to 5: ");
-                while (!keyboard.hasNextInt())
+            int option = 10;
+            while (option <= 0 || option > 5)
+            {
+                System.out.print("Please enter a number from 1 to 5: ");
+                while (!scan.hasNextInt())
                 {
                     System.out.println("That's not a number!");
-                    keyboard.next(); // this is important!
+                    scan.next();
                 }
-                option = keyboard.nextInt();
+                option = scan.nextInt();
 
-                if (option != 5)
+                if (!(option <= 0 || (option > 4)))
                 {
                     if (aQuestion.getShuffled().get(option-1).equals(answers[4]))
                     {
                         score++;
                     }
                 }
+            }
 
-            } while (option <= 0 || option > 5);
-            System.out.println("\nCorrect answer: " + answers[4]);
+            System.out.println("\n\tCorrect answer: " + answers[4]);
 
             randomQuestions.remove(index); // to delete entry we received
 
         }
-        System.out.print("Your score: " + score);
+
+        aPlayer.setScore(score);
+        aPlayer.addOneGame();
+        System.out.print("\n\tYour score: " + score + "\n");
+        System.out.print(aPlayer.toString());
+
+        return aPlayer;
+
     }
 
 }

@@ -1,5 +1,6 @@
-public class Misc {
-
+public class Misc
+{
+    // currentPlayer is not null when the player has logged in already
     private Player currentPlayer = null;
 
     public static String clearScreen()
@@ -7,17 +8,23 @@ public class Misc {
         return "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     }
 
-    public void login(Player aPlayer) {
-        if (aPlayer.getUsername() != null && aPlayer.getPassword() != null) {
-            if (currentPlayer != null) {
+    public void login(Player aPlayer)
+    {
+        if (aPlayer != null)
+        {
+            if (currentPlayer != null)
+            {
                 System.out.println("\n" + currentPlayer.getUsername() +
                         " has already logged in.");
-            } else // The player hasn't registered
+            }
+            else // The player hasn't registered
             {
                 currentPlayer = aPlayer;
             }
-        } else {
-
+        }
+        else
+        {
+            // Only activated if the user failed logging in
         }
     }
 
@@ -29,49 +36,43 @@ public class Misc {
         }
         else
         {
-
+            // This is only activated if the user failed registering, in which case the info is not added to the list
         }
     }
 
-    public void authGame()
+    public Player authGame(Player aPlayer)
     {
         if (currentPlayer != null)
         {
-            Game.theGame(); // Implementation starts here!
-
-            // Test to print all the questions, which works
-//            for(int i = 0; i != GameController.questionList.size(); i++)
-//            {
-//                Question anotherQuestion = (Question) GameController.questionList.get(i);
-//                System.out.println(anotherQuestion.toStringShuffled());
-//            }
+            Game.theGame(currentPlayer);
+            return currentPlayer;
         }
         else
         {
             System.out.println("\nYou need to log in first.");
         }
+        return aPlayer;
     }
 
-
-
-    public static boolean checkRegistered(Player aPlayer)
+    public static Player checkRegistered(String username, String password)
     {
-        boolean isRegistered = false;
+        Player aPlayer = new Player();
 
-        if (aPlayer.getPassword() == null) // Loop only activates if registering
+        // Loop only activates if registering, since the only time password is passed
+        // as null is when registering
+        if (password.isEmpty())
         {
             for (int i = 0; i < GameController.playerList.size(); i++)
             {
                 Player anotherPlayer = (Player) GameController.playerList.get(i);
 
-                if (aPlayer.getUsername().equals(anotherPlayer.getUsername())) // We use the equals method in player to check if both username and password match
+                if (username.equals(anotherPlayer.getUsername())) // We use the equals method in player to check if both username and password match
                 {
-                    isRegistered = true;
-                    break;
+                    aPlayer = null;
                 }
                 else
                 {
-                    isRegistered = false;
+
                 }
 
             }
@@ -79,23 +80,23 @@ public class Misc {
 
         else // Loop only activates if logging in
         {
-            for (int i = 0; i < GameController.playerList.size(); i++)
+            for (int i = 0; i != GameController.playerList.size(); i++)
             {
                 Player anotherPlayer = (Player) GameController.playerList.get(i);
 
-                if (aPlayer.getUsername().equals(anotherPlayer.getUsername()) && aPlayer.getPassword().equals(anotherPlayer.getPassword())) // We use the equals method in player to check if both username and password match
+                if (username.equals(anotherPlayer.getUsername()) && password.equals(anotherPlayer.getPassword())) // We use the equals method in player to check if both username and password match
                 {
-                    isRegistered = true;
-                    break;
+                    return anotherPlayer;
                 }
                 else
                 {
-                    isRegistered = false;
+                    aPlayer = null;
                 }
             }
         }
+        return aPlayer;
 
-        return isRegistered;
     }
+
 
 }

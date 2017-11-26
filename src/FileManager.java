@@ -9,8 +9,10 @@ import java.util.regex.Pattern;
 
 public class FileManager
 {
-
-    public static List<Player> getUsers()
+    //-------------------------------------------------------------------
+    // Returns the list of players registered as a List of player objects
+    //-------------------------------------------------------------------
+    public static List<Player> getUsers() //
     {
         Scanner inputStream = null;
         ArrayList<Player> playerArray = new ArrayList<>();
@@ -22,8 +24,12 @@ public class FileManager
             while(inputStream.hasNext())
             {
                 String users = inputStream.nextLine();
-                String[] userList = users.split("(?<!\\\\)" + Pattern.quote(",")); // how do csv files work?
-                playerArray.add(new Player(userList[0], userList[1], userList[2], userList[3]));
+                // We allow the user to use commas in their info by using a regex skipping a comma if there
+                // are any backslash before it
+                String[] userList = users.split("(?<!\\\\)" + Pattern.quote(","));
+                int score = Integer.parseInt(userList[4]);
+                int numberOfGames = Integer.parseInt(userList[5]);
+                playerArray.add(new Player(userList[0], userList[1], userList[2], userList[3], numberOfGames, score));
             }
         }
         catch(FileNotFoundException e)
@@ -35,21 +41,20 @@ public class FileManager
         return playerArray;
     }
 
-    //--------------------------------------------------------------------------
-    //  Check whether a player is already registered
-    //--------------------------------------------------------------------------
-
-
+    //---------------------------------------
+    // Prints the List of Players to the file
+    //---------------------------------------
     public static void printToFile(List aList)
     {
 
         PrintWriter outputStream = null;
 
-        try {
+        try
+        {
             outputStream
                     = new PrintWriter(new FileOutputStream("users.csv"));
 
-            for(int i = 0; i != aList.size(); i++)
+            for (int i = 0; i != aList.size(); i++)
             {
                 String player = aList.get(i).toString() + "\n";
                 outputStream.append(player);
@@ -57,12 +62,17 @@ public class FileManager
             outputStream.flush();
             outputStream.close();
 
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             System.out.println("Error opening the file users.csv");
             System.exit(0);
         }
     }
 
+    //-----------------------------------------------------------------------
+    // Returns the list of questions registered as a List of question objects
+    //-----------------------------------------------------------------------
     public static List getQuestions()
     {
         Scanner inputStream = null;

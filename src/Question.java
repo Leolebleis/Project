@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Question
 {
-    private String[] words = new String[5];
-    private List<String> shuffled = new ArrayList<>();
+    private String[] words = new String[5];             // Array of different questions
+    private List<String> shuffled = new ArrayList<>();  // Shuffled list that will be displayed in game
 
     Question()
     {
@@ -18,11 +18,11 @@ public class Question
 
     Question(String questionWord, String firstWord, String secondWord, String thirdWord, String answer)
     {
-        words[0] = questionWord;
+        words[0] = questionWord;    // First is always the word in the question
         words[1] = firstWord;
         words[2] = secondWord;
         words[3] = thirdWord;
-        words[4] = answer;
+        words[4] = answer;          // Fourth is always the right answer
     }
 
     public String[] getWords()
@@ -35,26 +35,18 @@ public class Question
         return shuffled;
     }
 
-    public void setWords(String questionWord, String firstWord, String secondWord, String thirdWord, String answer)
-    {
-        words[0] = questionWord;
-        words[1] = firstWord;
-        words[2] = secondWord;
-        words[3] = thirdWord;
-        words[4] = answer;
-    }
-
+    // Displays the questions already randomized
     public String toString() {
         int[] solutionArray = {0, 1, 2, 3};
 
         shuffleArray(solutionArray);
-        String question = "New word: " + words[0];
+        String question = "\n\tNew word: " + words[0];
 
         for (int i = 0; i < solutionArray.length; i++)
         {
             switch (solutionArray[i]) {
                 case 0:
-                    shuffled.add(words[1]);
+                    shuffled.add(words[1]); // Using a list makes this process very straight forward
                     question += ("\n" + (i + 1) + ". " + words[1]);
                     break;
                 case 1:
@@ -77,7 +69,7 @@ public class Question
         return question;
     }
 
-    private static void shuffleArray(int[] ar) //Fisher–Yates shuffle//
+    private static void shuffleArray(int[] ar) // Fisher–Yates shuffle
     {
 
         Random rnd = new Random();
