@@ -73,7 +73,6 @@ public class PlayerRestrictions
 
             }
         }
-
         else // Loop only activates if logging in (password != "")
         {
             for (int i = 0; i != GameController.playerList.size(); i++)

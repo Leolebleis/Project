@@ -73,17 +73,17 @@ public class Question
         return question;
     }
 
-    private static void shuffleArray(int[] ar) // Fisher–Yates shuffle
+    private static void shuffleArray(int[] solutionArray) // Fisher–Yates shuffle
     {
-
         Random rnd = new Random();
-        for (int i = ar.length - 1; i > 0; i--)
+        for (int i = solutionArray.length - 1; i > 0; i--)
         {
+            // Randomly selects an element of solutionArray
             int index = rnd.nextInt(i + 1);
-            // Simple swap
-            int a = ar[index];
-            ar[index] = ar[i];
-            ar[i] = a;
+            int a = solutionArray[index];
+            // Reassigns it
+            solutionArray[index] = solutionArray[i];
+            solutionArray[i] = a;
         }
     }
 
