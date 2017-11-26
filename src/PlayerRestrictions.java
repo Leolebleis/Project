@@ -1,4 +1,4 @@
-public class Misc
+public class PlayerRestrictions
 {
     // currentPlayer != null when the player has logged in already
     private Player currentPlayer = null;

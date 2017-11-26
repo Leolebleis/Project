@@ -15,7 +15,7 @@ public class GameController
     public static void main(String[] args)
     {
         Player aPlayer = null;
-        Misc aMisc = new Misc();
+        PlayerRestrictions aPlayerRestriction = new PlayerRestrictions();
         // Stores both users and questions in lists at startup
         playerList = FileManager.getUsers();
         questionList = FileManager.getQuestions();
@@ -30,14 +30,14 @@ public class GameController
             {
                 case "l":
                     aPlayer = loginDetails(); // Stores the player if a match is found or null otherwise
-                    aMisc.login(aPlayer);
+                    aPlayerRestriction.login(aPlayer);
                     break;
                 case "r":
                     aPlayer = registerDetails();
-                    aMisc.register(aPlayer);
+                    aPlayerRestriction.register(aPlayer);
                     break;
                 case "p":
-                    aPlayer = aMisc.authGame(aPlayer);
+                    aPlayer = aPlayerRestriction.authGame(aPlayer);
                     break;
                 case "a":
                     aboutText();
@@ -102,7 +102,7 @@ public class GameController
         }
 
         // This checks if the user exists or not by triggering only part of checkRegistered
-        Player aPlayer = Misc.checkRegistered(username, password);
+        Player aPlayer = PlayerRestrictions.checkRegistered(username, password);
 
         if (aPlayer == null) // aPlayer is null if no match has been found
         {
@@ -155,7 +155,7 @@ public class GameController
 
         // This only passes the username as only this needs to be unique when registering
         // In turn, it triggers only part of checkRegistered
-        Player aPlayer = Misc.checkRegistered(username, "");
+        Player aPlayer = PlayerRestrictions.checkRegistered(username, "");
 
         if (aPlayer == null) // aPlayer is null if a username match has been found
         {
