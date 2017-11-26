@@ -6,7 +6,7 @@ public class Game
 {
     private static int score; // Score of the player for this game
 
-    public static Player theGame(Player aPlayer)
+    public static void theGame(Player aPlayer)
     {
 
         System.out.print(aPlayer.toString());
@@ -51,9 +51,6 @@ public class Game
         aPlayer.setScore(score);
         aPlayer.addOneGame();
         System.out.print("\n\tYour score: " + score + "\n");
-        System.out.print(aPlayer.toString());
-
-        return aPlayer;
 
     }
 

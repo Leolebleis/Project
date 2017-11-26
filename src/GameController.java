@@ -43,6 +43,7 @@ public class GameController {
                     aPlayer = aMisc.authGame(aPlayer);
                     break;
                 case "a":
+                    aboutText();
                     break;
                 case "q":
                     break;
@@ -169,6 +170,22 @@ public class GameController {
             return new Player(firstName, lastName, username, password, 0, 0);
         }
 
+    }
+
+    private static void aboutText()
+    {
+        Scanner scan = new Scanner(System.in);
+        String answer = "";
+
+        while(!answer.equals("yes".toLowerCase()))
+        {
+            System.out.println("\n\tGAME INSTRUCTIONS:\n\n\tYou will be presented 10 questions, and for each of them you will" +
+                    "\n\tneed to choose the synonym of a word from a list displayed. " +
+                    "\n\tYou must select the synonym in the list in order to gain a point. " +
+                    "\n\tAt the end of the game, you will be able to see your score!");
+            System.out.print("\nAre you ready to play? (yes/no) ");
+            answer = scan.nextLine();
+        }
     }
 
     private static boolean passwordRestriction(String password)

@@ -27,9 +27,12 @@ public class FileManager
                 // We allow the user to use commas in their info by using a regex skipping a comma if there
                 // are any backslash before it
                 String[] userList = users.split("(?<!\\\\)" + Pattern.quote(","));
+
+                String password = userList[3].replaceAll("\\\\,", ",");
+                String username = userList[2].replaceAll("\\\\,",",");
                 int score = Integer.parseInt(userList[4]);
                 int numberOfGames = Integer.parseInt(userList[5]);
-                playerArray.add(new Player(userList[0], userList[1], userList[2], userList[3], numberOfGames, score));
+                playerArray.add(new Player(userList[0], userList[1], username, password, numberOfGames, score));
             }
         }
         catch(FileNotFoundException e)
@@ -46,7 +49,6 @@ public class FileManager
     //---------------------------------------
     public static void printToFile(List aList)
     {
-
         PrintWriter outputStream = null;
 
         try

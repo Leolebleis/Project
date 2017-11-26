@@ -32,13 +32,11 @@ public class Player
     public void setScore(int newScore)
     {
         score = score + newScore;
-        System.out.println(GameController.playerList.get(0).toString());
     }
 
     public void addOneGame()
     {
         numberOfGames++;
-        System.out.println(GameController.playerList.get(0).toString());
     }
 
     public String getFirstName()
@@ -74,7 +72,10 @@ public class Player
     // This is how the players will be printed to the file
     public String toString()
     {
-        return firstName + "," + lastName + "," + username + "," + password + "," +
+        String thePassword = password.replaceAll(",","\\\\,");
+        String theUsername = username.replaceAll(",","\\\\,");
+
+        return firstName + "," + lastName + "," + theUsername + "," + thePassword + "," +
                 numberOfGames + "," + score;
     }
 
