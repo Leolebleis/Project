@@ -39,8 +39,9 @@ public class Question
     public String toString()
     {
         int[] solutionArray = {0, 1, 2, 3};
-        shuffleArray(solutionArray);
+
         // This method shuffles the integers from 0 to 3
+        shuffleArray(solutionArray);
 
         String question = "\n\tNew word: " + words[0];
 
