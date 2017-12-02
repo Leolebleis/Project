@@ -16,6 +16,9 @@ public class PlayerRestrictions
             else // The player hasn't registered
             {
                 currentPlayer = aPlayer;
+                System.out.println("You have successfully logged in.\nPlayer: " + aPlayer.getFirstName() + " " + aPlayer.getLastName());
+                System.out.println("Score: " + aPlayer.getScore());
+                System.out.println("Number of games: " + aPlayer.getNumberOfGames());
             }
         }
         else

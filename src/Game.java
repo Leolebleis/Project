@@ -4,10 +4,14 @@ import java.util.Scanner;
 
 public class Game
 {
-    private static int score; // Score of the player for this game
+
 
     public static void theGame(Player aPlayer)
     {
+        int score = 0; // Score of the player for this game
+        int skips = 0;
+        int answered = 0;
+
         List randomQuestions = GameController.questionList;
         Scanner scan = new Scanner(System.in);
 
@@ -37,21 +41,24 @@ public class Game
                     // original list answers[]
                     if (aQuestion.getShuffled().get(option - 1).equals(answers[4]))
                     {
+                        System.out.println("\n\nCorrect!");
                         score++;
+                        answered++;
                     }
                     else
                     {
-                        // No point if incorrect
+                        System.out.println("\n\nInorrect!");
+                        answered++;
                     }
                 }
                 else
                 {
-                    // No point if player chooses "I'm not sure"
+                    System.out.println("\n\nSkipped!");
+                    skips++;
                 }
             }
-
-            System.out.println("\n\tCorrect answer: " + answers[4]);
-
+            System.out.println("\n\n\t" + answers[0] + " means " + answers[4]);
+            roundSummary(score, skips, answered);
             // We delete the question we just selected so as to never pick the same question twice (even though unlikely)
             // This also demonstrates the advantage of using lists, as randomQuestions.size() changes in consequence
             randomQuestions.remove(index);
@@ -59,7 +66,25 @@ public class Game
 
         aPlayer.setScore(score);
         aPlayer.addOneGame();
-        System.out.print("\n\tYour score: " + score + "\n");
+        System.out.print("Game over!");
+        roundSummary(score, skips, answered);
+
+    }
+
+    private static void roundSummary(int score, int skips, int answered)
+    {
+        System.out.println("\n\nQuestions answered:     " + answered + "/10");
+        System.out.println("Questions skipped:       " + skips + "/10");
+        System.out.println("\n\nCurrent score:        " + score + "/10");
+        System.out.println("\n\nPress Enter to continue:");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e)
+        {
+
+        }
     }
 
 }

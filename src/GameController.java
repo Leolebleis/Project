@@ -1,5 +1,7 @@
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.io.Console;
 
 public class GameController
 {
@@ -86,6 +88,7 @@ public class GameController
     private static Player loginDetails()
     {
         Scanner scan = new Scanner(System.in);
+        Console console = System.console();
 
         String username = "";
         while (username.isEmpty())
@@ -94,11 +97,11 @@ public class GameController
             username = scan.nextLine();
         }
 
-        String password = "";
+        String password = new String(console.readPassword("\n\tEnter the player\'s password (6 characters or more): "));
+
         while (password.isEmpty() || !passwordRestriction(password))
         {
-            System.out.print("\n\tEnter the player\'s password (6 characters or more): ");
-            password = scan.next();
+            password = new String(console.readPassword("\n\tEnter the player\'s password (6 characters or more): "));
         }
 
         // This checks if the user exists or not by triggering only part of checkRegistered
@@ -110,9 +113,7 @@ public class GameController
         }
         else
         {
-            System.out.println("You have successfully logged in.\nPlayer: " + aPlayer.getFirstName() + " " + aPlayer.getLastName());
-            System.out.println("Score: " + aPlayer.getScore());
-            System.out.println("Number of games: " + aPlayer.getNumberOfGames());
+            // Player managed to log in
         }
         return aPlayer;
 
@@ -124,6 +125,7 @@ public class GameController
     private static Player registerDetails()
     {
         Scanner scan = new Scanner(System.in);
+        Console console = System.console();
 
         String firstName = "";
         while (firstName.isEmpty() || firstName.contains(","))
@@ -146,11 +148,11 @@ public class GameController
             username = scan.nextLine();
         }
 
-        String password = "";
+        String password = new String(console.readPassword("\n\tEnter the player\'s password (6 characters or more): "));
+
         while (password.isEmpty() || !passwordRestriction(password))
         {
-            System.out.print("\n\tEnter the player\'s password (6 characters or more): ");
-            password = scan.next();
+            password = new String(console.readPassword("\n\tEnter the player\'s password (6 characters or more): "));
         }
 
         // This only passes the username as only this needs to be unique when registering
@@ -172,17 +174,23 @@ public class GameController
     private static void aboutText()
     {
         Scanner scan = new Scanner(System.in);
-        String answer = "";
 
-        while(!answer.equals("yes".toLowerCase()))
+        System.out.println("\n\tGAME INSTRUCTIONS:\n\n\tYou will be presented 10 questions, and for each of them you will" +
+                "\n\tneed to choose the synonym of a word from a list displayed. " +
+                "\n\tYou must select the synonym in the list in order to gain a point. " +
+                "\n\tAt the end of the game, you will be able to see your score!");
+        System.out.print("\nPress \"Enter\" when you are ready to play: ");
+        System.out.println("\n\nPress Enter to continue:");
+
+        try
         {
-            System.out.println("\n\tGAME INSTRUCTIONS:\n\n\tYou will be presented 10 questions, and for each of them you will" +
-                    "\n\tneed to choose the synonym of a word from a list displayed. " +
-                    "\n\tYou must select the synonym in the list in order to gain a point. " +
-                    "\n\tAt the end of the game, you will be able to see your score!");
-            System.out.print("\nAre you ready to play? (yes/no): ");
-            answer = scan.nextLine();
+            System.in.read();
         }
+        catch (Exception e)
+        {
+
+        }
+
     }
 
     private static boolean passwordRestriction(String password)
