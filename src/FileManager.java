@@ -1,7 +1,4 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,6 +28,7 @@ public class FileManager
                 // Deletes the backslashes before commas before storing the player in playerArray
                 String password = userList[3].replaceAll("\\\\,", ",");
                 String username = userList[2].replaceAll("\\\\,",",");
+
                 int score = Integer.parseInt(userList[4]);
                 int numberOfGames = Integer.parseInt(userList[5]);
                 playerArray.add(new Player(userList[0], userList[1], username, password, numberOfGames, score));
@@ -102,4 +100,6 @@ public class FileManager
 
         return questionsArray;
     }
+
+
 }

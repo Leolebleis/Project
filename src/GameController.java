@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import java.io.Console;
@@ -7,8 +6,8 @@ public class GameController
 {
 
     // We set the lists public as they are constantly used throughout the program
-    public static List playerList; // List containing player objects for each line in users.csv.
-    public static List questionList; // List containing question objects for each line in quiz.csv
+    public static List<Player> playerList; // List containing player objects for each line in users.csv.
+    public static List<Question> questionList; // List containing question objects for each line in quiz.csv
     private static final int minPasswordLength = 6;
 
     // We decided to use lists instead of arrays because they are easier to deal with: they do not need to be
@@ -44,6 +43,9 @@ public class GameController
                 case "a":
                     aboutText();
                     break;
+                case "b":
+                    leaderBoard();
+                    break;
                 case "q":
                     // Exits the game
                     break;
@@ -71,6 +73,7 @@ public class GameController
             System.out.println("\tLogin (L/l)");
             System.out.println("\tRegister (R/r)");
             System.out.println("\tPlay (P/p)");
+            System.out.println("\tShow the Leader Board (B/b)");
             System.out.println("\tAbout (A/a)");
             System.out.println("\tQuit (Q/q)");
 
@@ -166,7 +169,7 @@ public class GameController
         }
         else
         {
-            return new Player(firstName, lastName, username, password, 0, 0);
+            return new Player(firstName, lastName, username, PlayerRestrictions.hashPassword(password), 0, 0);
         }
 
     }
@@ -191,6 +194,18 @@ public class GameController
 
         }
 
+    }
+
+    private static void leaderBoard()
+    {
+        System.out.println("Leader Board");
+        System.out.println("Showing percentage of questions correct");
+        for(int i = 0; i < playerList.size(); i++)
+        {
+            System.out.println(playerList.get(i).getFirstName() + " " + playerList.get(i).getLastName() + "       "
+                    + ((playerList.get(i).getScore() * 10) / playerList.get(i).getNumberOfGames()) + "%");
+
+        }
     }
 
     private static boolean passwordRestriction(String password)

@@ -73,11 +73,12 @@ public class Player
     public String toString()
     {
         // Prints a backslash before commas to allow the user to use them (this is only used when printing to the file)
-        String thePassword = password.replaceAll(",","\\\\,");
         String theUsername = username.replaceAll(",","\\\\,");
 
-        return firstName + "," + lastName + "," + theUsername + "," + thePassword + "," +
+
+        return firstName + "," + lastName + "," + theUsername + "," + password + "," +
                 numberOfGames + "," + score;
+
     }
 
     public boolean equals(Object otherObject) throws NullPointerException
