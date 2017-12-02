@@ -40,6 +40,9 @@ public class GameController
                 case "p":
                     aPlayer = aPlayerRestriction.authGame(aPlayer);
                     break;
+                case "b":
+                    leaderBoard();
+                    break;
                 case "a":
                     aboutText();
                     break;
