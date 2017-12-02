@@ -46,9 +46,6 @@ public class GameController
                 case "a":
                     aboutText();
                     break;
-                case "b":
-                    leaderBoard();
-                    break;
                 case "q":
                     // Exits the game
                     break;
