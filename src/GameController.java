@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.io.Console;
@@ -181,7 +182,7 @@ public class GameController
                 "\n\tYou must select the synonym in the list in order to gain a point. " +
                 "\n\tAt the end of the game, you will be able to see your score!");
         System.out.print("\nPress \"Enter\" when you are ready to play: ");
-        System.out.println("\n\nPress Enter to continue:");
+        System.out.print("\n\nPress Enter to continue:");
 
         try
         {
@@ -196,12 +197,29 @@ public class GameController
 
     private static void leaderBoard()
     {
-        System.out.println("Leader Board");
-        System.out.println("Showing percentage of questions correct");
-        for(int i = 0; i < playerList.size(); i++)
+        List<Player> leaderBoard = playerList;
+
+        System.out.println("\n\tLeader Board");
+        System.out.println("\tShowing percentage of questions correct:");
+
+        Collections.sort(leaderBoard);
+
+
+        for (int i = 0; i < ((leaderBoard.size() < 3) ? leaderBoard.size() : 3); i++)
         {
-            System.out.println(playerList.get(i).getFirstName() + " " + playerList.get(i).getLastName() + "       "
-                    + ((playerList.get(i).getScore() * 10) / playerList.get(i).getNumberOfGames()) + "%");
+            Player aPlayer = leaderBoard.get(i);
+            System.out.print("\n\t" + aPlayer.getFirstName() + " " + aPlayer.getLastName() + " ");
+            System.out.printf("%.2f",((aPlayer.getScore() == 0) ? (float) 0 : (float) aPlayer.getScore()/aPlayer.getNumberOfGames() * 10));
+            System.out.println("%");
+        }
+
+        System.out.print("\n\nPress Enter to continue:");
+        try
+        {
+            System.in.read();
+        }
+        catch (Exception e)
+        {
 
         }
     }

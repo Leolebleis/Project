@@ -66,17 +66,17 @@ public class Game
 
         aPlayer.setScore(score);
         aPlayer.addOneGame();
-        System.out.print("Game over!");
-        roundSummary(score, skips, answered);
-
     }
 
     private static void roundSummary(int score, int skips, int answered)
     {
+
         System.out.println("\n\nQuestions answered:     " + answered + "/10");
         System.out.println("Questions skipped:       " + skips + "/10");
         System.out.println("\n\nCurrent score:        " + score + "/10");
-        System.out.println("\n\nPress Enter to continue:");
+        if(answered == 10)
+            System.out.print("\n\nGame over!");
+        System.out.print("\n\nPress Enter to continue:");
         try
         {
             System.in.read();

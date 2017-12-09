@@ -1,4 +1,6 @@
-public class Player
+import java.lang.Comparable;
+
+public class Player implements Comparable<Player>
 {
 
     private String firstName;
@@ -95,6 +97,25 @@ public class Player
 
         Player otherPlayer = (Player) otherObject;
         return (this.username.compareTo(otherPlayer.username) == 0 && (this.password.compareTo(otherPlayer.password) == 0));
+    }
+
+    @Override
+    public int compareTo(Player aPlayer)
+    {
+
+        if ((float) score/numberOfGames * 10 < (float) aPlayer.score/aPlayer.numberOfGames * 10)
+        {
+            return 1;
+        }
+        else if ((float) score/numberOfGames * 10 > (float) aPlayer.score/aPlayer.numberOfGames * 10)
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+
     }
 
 }
