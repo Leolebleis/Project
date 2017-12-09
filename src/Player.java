@@ -101,6 +101,7 @@ public class Player implements Comparable<Player>
     @Override
     public int compareTo(Player aPlayer)
     {
+        // In this overridden method we compare each player's win percentage
 
         if ((float) score/numberOfGames * 10 < (float) aPlayer.score/aPlayer.numberOfGames * 10)
         {

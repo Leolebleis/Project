@@ -44,8 +44,6 @@ public class PlayerRestrictions
         }
     }
 
-
-
     public Player authGame(Player aPlayer)
     {
         if (currentPlayer != null) // Launches the game only if the player has registered
@@ -60,7 +58,8 @@ public class PlayerRestrictions
         return aPlayer;
     }
 
-    public static Player checkRegistered(String username) // Overloading
+    // Overloading method used when registering
+    public static Player checkRegistered(String username)
     {
         Player aPlayer = new Player();
 
@@ -80,7 +79,9 @@ public class PlayerRestrictions
         return aPlayer;
     }
 
-    public static Player checkRegistered(String username, String password) // Polymorphic method
+
+    // Overloading method used when logging in
+    public static Player checkRegistered(String username, String password)
     {
         Player aPlayer = new Player();
 
@@ -103,6 +104,9 @@ public class PlayerRestrictions
 
     }
 
+    //----------------------------------------------------------------------------------
+    // We use this method to hash the password, making it anonymous inside the user file
+    //----------------------------------------------------------------------------------
     public static String hashPassword(String password)
     {
         try
@@ -113,7 +117,6 @@ public class PlayerRestrictions
             byte[] hashedPass = hashing.digest(bytesPass);
 
             return Base64.getEncoder().encodeToString(hashedPass);
-
         }
         catch (UnsupportedEncodingException | NoSuchAlgorithmException e)
         {
@@ -121,6 +124,5 @@ public class PlayerRestrictions
             return "";
         }
     }
-
 
 }

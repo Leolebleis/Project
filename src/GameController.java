@@ -192,24 +192,26 @@ public class GameController
         {
 
         }
-
     }
 
     private static void leaderBoard()
     {
+        Scanner scan = new Scanner(System.in);
+
         List<Player> leaderBoard = playerList;
 
         System.out.println("\n\tLeader Board");
         System.out.println("\tShowing percentage of questions correct:");
 
-        Collections.sort(leaderBoard);
+        Collections.sort(leaderBoard); // We start by sorting the players in order of their score
 
-
+        // We want to display the 3 best players, or fewer if there are fewer players registered
         for (int i = 0; i < ((leaderBoard.size() < 3) ? leaderBoard.size() : 3); i++)
         {
             Player aPlayer = leaderBoard.get(i);
-            System.out.print("\n\t" + aPlayer.getFirstName() + " " + aPlayer.getLastName() + " ");
-            System.out.printf("%.2f",((aPlayer.getScore() == 0) ? (float) 0 : (float) aPlayer.getScore()/aPlayer.getNumberOfGames() * 10));
+            System.out.print("\n\t" + (i + 1) + ". " + aPlayer.getFirstName() + " " + aPlayer.getLastName() + " ");
+            // If a Player has never played, the value goes to 0%
+            System.out.printf("%.2f",((aPlayer.getNumberOfGames() == 0) ? (float) 0 : (float) aPlayer.getScore()/aPlayer.getNumberOfGames() * 10));
             System.out.println("%");
         }
 

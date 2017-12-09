@@ -5,16 +5,16 @@ import java.util.Scanner;
 public class Game
 {
 
-
     public static void theGame(Player aPlayer)
     {
         int score = 0; // Score of the player for this game
-        int skips = 0;
-        int answered = 0;
+        int skips = 0; // Number of questions skipped for this game
+        int answered = 0; // Number of questions answered for this game
 
         List randomQuestions = GameController.questionList;
         Scanner scan = new Scanner(System.in);
 
+        // This loop runs for 10 questions
         for (int i = 0; i < 10; i++)
         {
             Random rnd = new Random();
@@ -24,8 +24,10 @@ public class Game
 
             System.out.print(aQuestion.toString()); // This displays the question already shuffled
 
-            int option = 10;
-            while (option <= 0 || option > 5) // We check for a valid input
+            int option = 10; // To keep the compiler happy
+
+            // We start by checking for a valid input
+            while (option <= 0 || option > 5)
             {
                 System.out.print("Please enter a number from 1 to 5: ");
                 while (!scan.hasNextInt())
@@ -74,7 +76,7 @@ public class Game
         System.out.println("\n\nQuestions answered:     " + answered + "/10");
         System.out.println("Questions skipped:       " + skips + "/10");
         System.out.println("\n\nCurrent score:        " + score + "/10");
-        if(answered == 10)
+        if(answered == 10) // This is only run for the last question
             System.out.print("\n\nGame over!");
         System.out.print("\n\nPress Enter to continue:");
         try
