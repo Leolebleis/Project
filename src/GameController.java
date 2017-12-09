@@ -179,8 +179,8 @@ public class GameController
     {
         System.out.println("\n\tGAME INSTRUCTIONS:\n\n\tYou will be presented 10 questions, and for each of them you will" +
                 "\n\tneed to choose the synonym of a word from a list displayed. " +
-                "\n\tYou must select the synonym in the list in order to gain a point. " +
-                "\n\tAt the end of the game, you will be able to see your score!");
+                "\n\tIf you select the right answer, you will gain 1 point. At the end" +
+                "\n\t of the game, you will be able to see your score!");
         System.out.print("\nPress \"Enter\" when you are ready to play: ");
         System.out.print("\n\nPress Enter to continue:");
 
