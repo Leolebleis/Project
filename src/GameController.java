@@ -196,8 +196,6 @@ public class GameController
 
     private static void leaderBoard()
     {
-        Scanner scan = new Scanner(System.in);
-
         List<Player> leaderBoard = playerList;
 
         System.out.println("\n\tLeader Board");
