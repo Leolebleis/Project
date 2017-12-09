@@ -60,7 +60,7 @@ public class PlayerRestrictions
         return aPlayer;
     }
 
-    public static Player checkRegistered(String username) // Polymorphic method
+    public static Player checkRegistered(String username) // Overloading
     {
         Player aPlayer = new Player();
 

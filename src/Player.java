@@ -28,7 +28,6 @@ public class Player implements Comparable<Player>
         password = aPassword;
         score = aScore;
         numberOfGames = aNumberOfGames;
-
     }
 
     public void setScore(int newScore)
