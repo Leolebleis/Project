@@ -68,7 +68,7 @@ public class Question
             }
         }
 
-        question += "\n5. I’m not sure\n\n ";
+        question += "\n5. I'm not sure\n\n ";
 
         return question;
     }

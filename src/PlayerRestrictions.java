@@ -44,6 +44,8 @@ public class PlayerRestrictions
         }
     }
 
+
+
     public Player authGame(Player aPlayer)
     {
         if (currentPlayer != null) // Launches the game only if the player has registered
@@ -58,45 +60,43 @@ public class PlayerRestrictions
         return aPlayer;
     }
 
-    public static Player checkRegistered(String username, String password)
+    public static Player checkRegistered(String username) // Polymorphic method
     {
         Player aPlayer = new Player();
 
-        // Loop only activates if registering, since the only time password is passed
-        // as null is when registering
-        if (password.isEmpty())
+        for (int i = 0; i < GameController.playerList.size(); i++)
         {
-            for (int i = 0; i < GameController.playerList.size(); i++)
+            Player anotherPlayer = GameController.playerList.get(i);
+
+            if (username.equals(anotherPlayer.getUsername())) // We use the equals method in player to check if both username and password match
             {
-                Player anotherPlayer = GameController.playerList.get(i);
-
-                if (username.equals(anotherPlayer.getUsername())) // We use the equals method in player to check if both username and password match
-                {
-                    aPlayer = null;
-                }
-                else
-                {
-
-                }
-
+                aPlayer = null;
+            }
+            else
+            {
+                //
             }
         }
-        else // Loop only activates if logging in (password != "")
+        return aPlayer;
+    }
+
+    public static Player checkRegistered(String username, String password) // Polymorphic method
+    {
+        Player aPlayer = new Player();
+
+        for (int i = 0; i != GameController.playerList.size(); i++)
         {
-            for (int i = 0; i != GameController.playerList.size(); i++)
+            Player anotherPlayer = GameController.playerList.get(i);
+
+            String hashedPassword = hashPassword(password);
+
+            if (username.equals(anotherPlayer.getUsername()) && hashedPassword.equals(anotherPlayer.getPassword())) // We use the equals method in player to check if both username and password match
             {
-                Player anotherPlayer = GameController.playerList.get(i);
-
-                String hashedPassword = hashPassword(password);
-
-                if (username.equals(anotherPlayer.getUsername()) && hashedPassword.equals(anotherPlayer.getPassword())) // We use the equals method in player to check if both username and password match
-                {
-                    return anotherPlayer;
-                }
-                else
-                {
-                    aPlayer = null;
-                }
+                return anotherPlayer;
+            }
+            else
+            {
+                aPlayer = null;
             }
         }
         return aPlayer;

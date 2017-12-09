@@ -160,7 +160,7 @@ public class GameController
 
         // This only passes the username as only this needs to be unique when registering
         // In turn, it triggers only part of checkRegistered
-        Player aPlayer = PlayerRestrictions.checkRegistered(username, "");
+        Player aPlayer = PlayerRestrictions.checkRegistered(username);
 
         if (aPlayer == null) // aPlayer is null if a username match has been found
         {
@@ -176,8 +176,6 @@ public class GameController
 
     private static void aboutText()
     {
-        Scanner scan = new Scanner(System.in);
-
         System.out.println("\n\tGAME INSTRUCTIONS:\n\n\tYou will be presented 10 questions, and for each of them you will" +
                 "\n\tneed to choose the synonym of a word from a list displayed. " +
                 "\n\tYou must select the synonym in the list in order to gain a point. " +
