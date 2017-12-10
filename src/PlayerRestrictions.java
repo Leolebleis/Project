@@ -8,7 +8,6 @@ public class PlayerRestrictions
     // currentPlayer != null when the player has logged in already
     private Player currentPlayer = null;
 
-
     public void login(Player aPlayer)
     {
         if (aPlayer != null)
