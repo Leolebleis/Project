@@ -5,14 +5,10 @@ import java.io.Console;
 
 public class GameController
 {
-
     // We set the lists public as they are constantly used throughout the program
     public static List<Player> playerList; // List containing player objects for each line in users.csv.
     public static List<Question> questionList; // List containing question objects for each line in quiz.csv
     private static final int minPasswordLength = 6;
-
-    // We decided to use lists instead of arrays because they are easier to deal with: they do not need to be
-    // initialized, which is especially useful when appending the playerList
 
     public static void main(String[] args)
     {
@@ -190,7 +186,7 @@ public class GameController
         }
         catch (Exception e)
         {
-
+            System.out.println("Could not read input.");
         }
     }
 
@@ -220,7 +216,7 @@ public class GameController
         }
         catch (Exception e)
         {
-
+            System.out.println("Could not read input.");
         }
     }
 

@@ -49,7 +49,7 @@ public class Game
                     }
                     else
                     {
-                        System.out.println("\n\nInorrect!");
+                        System.out.println("\n\nIncorrect!");
                         answered++;
                     }
                 }
