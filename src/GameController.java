@@ -18,7 +18,7 @@ public class GameController
         playerList = FileManager.getUsers();
         questionList = FileManager.getQuestions();
 
-        String option = "";
+        String option = ""; // To keep the compiler happy
 
         while (!option.equals("q"))
         {
@@ -101,6 +101,7 @@ public class GameController
 
         while (password.isEmpty() || !passwordRestriction(password))
         {
+            // readPassword() hides the input
             password = new String(console.readPassword("\n\tEnter the player\'s password (6 characters or more): "));
         }
 
@@ -152,6 +153,7 @@ public class GameController
 
         while (password.isEmpty() || !passwordRestriction(password))
         {
+            // readPassword() hides the input
             password = new String(console.readPassword("\n\tEnter the player\'s password (6 characters or more): "));
         }
 
