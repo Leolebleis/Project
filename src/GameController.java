@@ -8,7 +8,7 @@ public class GameController
     // We set the lists public as they are constantly used throughout the program
     public static List<Player> playerList; // List containing player objects for each line in users.csv.
     public static List<Question> questionList; // List containing question objects for each line in quiz.csv
-    private static final int minPasswordLength = 6;
+    private static final int MIN_PASSWORD_LENGTH = 6;
 
     public static void main(String[] args)
     {
@@ -179,7 +179,6 @@ public class GameController
                 "\n\tneed to choose the synonym of a word from a list displayed. " +
                 "\n\tIf you select the right answer, you will gain 1 point. At the end" +
                 "\n\t of the game, you will be able to see your score!");
-        System.out.print("\nPress \"Enter\" when you are ready to play: ");
         System.out.print("\n\nPress Enter to continue:");
 
         try
@@ -224,7 +223,7 @@ public class GameController
 
     private static boolean passwordRestriction(String password)
     {
-        return password.length() >= minPasswordLength;
+        return password.length() >= MIN_PASSWORD_LENGTH;
     }
 
 }
