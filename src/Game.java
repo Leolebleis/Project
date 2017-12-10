@@ -53,10 +53,14 @@ public class Game
                         answered++;
                     }
                 }
-                else
+                else if (option == 5)
                 {
                     System.out.println("\n\nSkipped!");
                     skips++;
+                }
+                else
+                {
+
                 }
             }
             System.out.println("\n\n\t" + answers[0] + " means " + answers[4]);
