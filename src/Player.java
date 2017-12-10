@@ -3,12 +3,8 @@ import java.lang.Comparable;
 public class Player implements Comparable<Player>
 {
 
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String password;
-    private int score;
-    private int numberOfGames;
+    private String firstName, lastName, username, password;
+    private int score, numberOfGames;
 
     Player()
     {
@@ -33,11 +29,6 @@ public class Player implements Comparable<Player>
     public void setScore(int newScore)
     {
         score = score + newScore;
-    }
-
-    public void addOneGame()
-    {
-        numberOfGames++;
     }
 
     public String getFirstName()
@@ -68,6 +59,11 @@ public class Player implements Comparable<Player>
     public String getPassword()
     {
         return password;
+    }
+
+    public void addOneGame()
+    {
+        numberOfGames++;
     }
 
     // This is how the players will be printed to the file

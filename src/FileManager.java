@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -9,7 +8,7 @@ public class FileManager
     //-------------------------------------------------------------------
     // Returns the list of players registered as a List of player objects
     //-------------------------------------------------------------------
-    public static List<Player> getUsers() //
+    public static ArrayList<Player> getUsers() //
     {
         Scanner inputStream = null;
         ArrayList<Player> playerArray = new ArrayList<>();
@@ -45,7 +44,7 @@ public class FileManager
     //---------------------------------------
     // Prints the List of Players to the file
     //---------------------------------------
-    public static void printToFile(List aList)
+    public static void printToFile(ArrayList aList)
     {
         PrintWriter outputStream = null;
 
@@ -72,7 +71,7 @@ public class FileManager
     //-----------------------------------------------------------------------
     // Returns the list of questions registered as a List of question objects
     //-----------------------------------------------------------------------
-    public static List getQuestions()
+    public static ArrayList<Question> getQuestions()
     {
         Scanner inputStream = null;
         ArrayList<Question> questionsArray = new ArrayList<>();

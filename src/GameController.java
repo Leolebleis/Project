@@ -1,14 +1,14 @@
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 import java.io.Console;
 
 public class GameController
 {
-    // We set the lists public as they are constantly used throughout the program
-    public static List<Player> playerList; // List containing player objects for each line in users.csv.
-    public static List<Question> questionList; // List containing question objects for each line in quiz.csv
     private static final int MIN_PASSWORD_LENGTH = 6;
+    // We set the lists public as they are constantly used throughout the program
+    public static ArrayList<Player> playerList; // List containing player objects for each line in users.csv.
+    public static ArrayList<Question> questionList; // List containing question objects for each line in quiz.csv
 
     public static void main(String[] args)
     {
@@ -193,7 +193,7 @@ public class GameController
 
     private static void leaderBoard()
     {
-        List<Player> leaderBoard = playerList;
+        ArrayList<Player> leaderBoard = playerList;
 
         System.out.println("\n\tLeader Board");
         System.out.println("\tShowing percentage of questions correct:");

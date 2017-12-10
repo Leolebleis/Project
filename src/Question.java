@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Question
 {
     private String[] words = new String[5];             // Original Array of different questions
-    private List<String> shuffled = new ArrayList<>();  // Shuffled list of questions that will be displayed in game
+    private ArrayList<String> shuffled = new ArrayList<>();  // Shuffled list of questions that will be displayed in game
 
     Question()
     {
@@ -30,7 +29,7 @@ public class Question
         return words;
     }
 
-    public List getShuffled()
+    public ArrayList getShuffled()
     {
         return shuffled;
     }
