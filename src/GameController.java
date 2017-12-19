@@ -170,7 +170,6 @@ public class GameController
         {
             return new Player(firstName, lastName, username, PlayerRestrictions.hashPassword(password), 0, 0);
         }
-
     }
 
     private static void aboutText()

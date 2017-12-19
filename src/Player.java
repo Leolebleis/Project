@@ -85,7 +85,6 @@ public class Player implements Comparable<Player>
         {
             return false;
         }
-
         if (getClass() != otherObject.getClass())
         {
             return false;

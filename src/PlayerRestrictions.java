@@ -20,7 +20,7 @@ public class PlayerRestrictions
             else // The player hasn't registered
             {
                 currentPlayer = aPlayer;
-                System.out.println("You have successfully logged in.\nPlayer: " + aPlayer.getFirstName() + " " + aPlayer.getLastName());
+                System.out.println("\nYou have successfully logged in.\nPlayer: " + aPlayer.getFirstName() + " " + aPlayer.getLastName());
                 System.out.println("Score: " + aPlayer.getScore());
                 System.out.println("Number of games: " + aPlayer.getNumberOfGames());
             }
@@ -82,7 +82,7 @@ public class PlayerRestrictions
     // Overloaded method used when logging in
     public static Player checkRegistered(String username, String password)
     {
-        Player aPlayer = new Player();
+        Player aPlayer = null;
 
         for (int i = 0; i != GameController.playerList.size(); i++)
         {
@@ -92,7 +92,7 @@ public class PlayerRestrictions
 
             if (username.equals(anotherPlayer.getUsername()) && hashedPassword.equals(anotherPlayer.getPassword())) // We use the equals method in player to check if both username and password match
             {
-                return anotherPlayer;
+                aPlayer = anotherPlayer;
             }
             else
             {
@@ -100,7 +100,6 @@ public class PlayerRestrictions
             }
         }
         return aPlayer;
-
     }
 
     //----------------------------------------------------------------------------------

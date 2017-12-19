@@ -21,12 +21,11 @@ public class Game
         for (int i = 0; i < NUMBER_OF_QUESTIONS; i++)
         {
             Random rnd = new Random();
-            int index = rnd.nextInt(randomQuestions.size()); // We take 10 random questions from the list of questions
+            int index = rnd.nextInt(randomQuestions.size()); // We take 1 random question from the list of questions 10 times
             Question aQuestion = (Question) randomQuestions.get(index);
             String[] answers = aQuestion.getWords();
 
             System.out.print(aQuestion.toString()); // This displays the question already shuffled
-
 
             finalScore = aGame.updateScore(userInput(), aQuestion, answers);
 
@@ -35,7 +34,7 @@ public class Game
             randomQuestions.remove(index);
         }
 
-        aPlayer.setScore(finalScore);
+        aPlayer.setScore(finalScore); // This adds the final score obtained by the player to its info
         aPlayer.addOneGame();
     }
 
@@ -46,7 +45,6 @@ public class Game
         int option = 10; // To keep the compiler happy
 
         // We check for a valid input
-
         try{
             while (option <= 0 || option > 5)
             {

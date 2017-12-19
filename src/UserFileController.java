@@ -35,9 +35,9 @@ public class UserFileController {
                 playerArray.add(new Player(userList[0], userList[1], username, userList[3], numberOfGames, score));
             }
         }
-        catch(FileNotFoundException e)
+        catch(FileNotFoundException | ArrayIndexOutOfBoundsException e)
         {
-            System.out.println("The file users.csv could not be found.");
+            System.out.println("The file users.csv could not be found or read.");
             System.exit(0);
         }
         inputStream.close();
@@ -64,9 +64,9 @@ public class UserFileController {
             outputStream.flush();
             outputStream.close();
         }
-        catch (FileNotFoundException e)
+        catch (FileNotFoundException | ArrayIndexOutOfBoundsException e)
         {
-            System.out.println("Error opening the file users.csv");
+            System.out.println("The file quiz.csv could not be found or read.");
             System.exit(0);
         }
     }
