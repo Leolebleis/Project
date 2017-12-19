@@ -1,10 +1,13 @@
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class FileManager
-{
+public class UserFileController {
+
     //-------------------------------------------------------------------
     // Returns the list of players registered as a List of player objects
     //-------------------------------------------------------------------
@@ -67,36 +70,5 @@ public class FileManager
             System.exit(0);
         }
     }
-
-    //-----------------------------------------------------------------------
-    // Returns the list of questions registered as a List of question objects
-    //-----------------------------------------------------------------------
-    public static ArrayList<Question> getQuestions()
-    {
-        Scanner inputStream = null;
-        ArrayList<Question> questionsArray = new ArrayList<>();
-
-        try
-        {
-            inputStream =
-                    new Scanner(new FileInputStream("quiz.csv")).useDelimiter(",");
-
-            while (inputStream.hasNextLine())
-            {
-                String lineQuestion = inputStream.nextLine();
-                String[] splitQuestion = lineQuestion.split(",");
-                questionsArray.add(new Question(splitQuestion[0], splitQuestion[1], splitQuestion[2],
-                        splitQuestion[3], splitQuestion[4]));
-            }
-        }
-
-        catch(FileNotFoundException e) {
-            System.out.println("File \"quiz.csv\" was not found");
-            System.exit(0);
-        }
-
-        return questionsArray;
-    }
-
 
 }
