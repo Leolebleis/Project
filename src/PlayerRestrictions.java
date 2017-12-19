@@ -57,7 +57,7 @@ public class PlayerRestrictions
         return aPlayer;
     }
 
-    // Overloading method used when registering
+    // Overloaded method used when registering
     public static Player checkRegistered(String username)
     {
         Player aPlayer = new Player();
@@ -72,14 +72,14 @@ public class PlayerRestrictions
             }
             else
             {
-                //
+                // Activated when the player has successfully registered
             }
         }
         return aPlayer;
     }
 
 
-    // Overloading method used when logging in
+    // Overloaded method used when logging in
     public static Player checkRegistered(String username, String password)
     {
         Player aPlayer = new Player();
