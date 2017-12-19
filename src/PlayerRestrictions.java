@@ -82,7 +82,7 @@ public class PlayerRestrictions
     // Overloaded method used when logging in
     public static Player checkRegistered(String username, String password)
     {
-        Player aPlayer = null;
+        Player aPlayer = new Player();
 
         for (int i = 0; i != GameController.playerList.size(); i++)
         {
@@ -92,7 +92,7 @@ public class PlayerRestrictions
 
             if (username.equals(anotherPlayer.getUsername()) && hashedPassword.equals(anotherPlayer.getPassword())) // We use the equals method in player to check if both username and password match
             {
-                aPlayer = anotherPlayer;
+                return anotherPlayer;
             }
             else
             {
